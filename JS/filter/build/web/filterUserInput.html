@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    </head>
+    <body>
+        <div ng-app="myApp" ng-controller="namesCtrl">
+            <h1>Type a letter in the input field to see the name</h1>
+            <p><input type="text" ng-model="test"></p>
+            <ul>
+                <li ng-repeat="x in names | filter:test">
+                    {{x}}
+                    
+                </li>
+            </ul>
+        </div>
+        
+        <script>
+            angular.module('myApp', []).controller('namesCtrl', function($scope){
+                $scope.names = [
+                   'Jubayir',
+                   'Hossain',
+                   'Mehdee',
+                   'Moly',
+                   'Israt',
+                   'Rojina',
+                   'Ruma',
+                   'Mehdee2',
+                    
+                ]
+            });
+        </script>
+        <h1>The list will only consists of names matching the filter</h1>
+    </body>
+</html>

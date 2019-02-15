@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>PrimeFaces </title>
+            </f:facet>
+            <style type="text/css">
+                .ui-grid td {
+                    white-space: nowrap;
+                }
+            </style>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                    Header
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                    Footer
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                    <p:menu>
+                        <p:submenu label="Resources">
+                            <p:menuitem value="Demo" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
+                            <p:menuitem value="Documentation" url="http://www.primefaces.org/documentation.html" />
+                            <p:menuitem value="Forum" url="http://forum.primefaces.org/" />
+                            <p:menuitem value="Themes" url="http://www.primefaces.org/themes.html" />
+
+                        </p:submenu>
+
+                    </p:menu>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <h:form>
+                        <h:panelGrid columns="2" cellpadding="5" styleClass="ui-grid">
+                            <h:outputLabel for="basic" value="Basic Spinner: " />
+                            <p:spinner id="basic" value="#{spinnerView.number1}" />
+
+                            <h:outputLabel for="step" value="Step Factor: " />
+                            <p:spinner id="step" value="#{spinnerView.number2}" stepFactor="0.25" />
+
+                            <h:outputLabel for="minMax" value="Min/Max: " />
+                            <p:spinner id="minMax" value="#{spinnerView.number3}" min="0" max="100" />
+
+                            <h:outputLabel for="prefix" value="Prefix: " />
+                            <p:spinner id="prefix" value="#{spinnerView.number4}" prefix="$" min="0" />
+
+                            <h:outputLabel for="ajaxSpinner" value="Ajax Spinner: " />
+                            <p:outputPanel>
+                                <p:spinner id="ajaxSpinner" value="#{spinnerView.number5}">
+                                    <p:ajax update="ajaxSpinnerValue" process="@this" />
+                                </p:spinner>
+                                <h:outputText id="ajaxSpinnerValue" value="#{spinnerView.number5}" style="padding-left: 10px" />
+                            </p:outputPanel>
+                        </h:panelGrid>
+
+                        <br />
+
+                        <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" />
+
+                        <p:dialog header="Values" widgetVar="dlg" showEffect="fold" hideEffect="fold">
+                            <h:panelGrid id="display" columns="2" cellpadding="5">
+                                <h:outputText value="Value 1: " />
+                                <h:outputText value="#{spinnerView.number1}" />
+
+                                <h:outputText value="Value 2: " />
+                                <h:outputText value="#{spinnerView.number2}" />
+
+                                <h:outputText value="Value 3: " />
+                                <h:outputText value="#{spinnerView.number3}" />
+
+                                <h:outputText value="Value 4: " />
+                                <h:outputText value="#{spinnerView.number4}" />
+
+                                <h:outputText value="Value 5: " />
+                                <h:outputText value="#{spinnerView.number5}" />
+                            </h:panelGrid>
+                        </p:dialog>
+                    </h:form>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+

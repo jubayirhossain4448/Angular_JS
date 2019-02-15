@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="form1">
+            <h:outputLabel>ID:</h:outputLabel>
+            <h:inputText value="#{studentBean.student.id}"/>
+            <p:commandButton action="#{studentBean.searchById()}" value="Search" update="form2">
+                <f:setPropertyActionListener target="#{studentBean.student}" value="#{student}"/>
+            </p:commandButton>
+        </h:form>
+        <h:form id="form2">
+            <h:panelGrid columns="2">
+                <h:outputLabel>Name:</h:outputLabel>
+                <h:inputText value="#{studentBean.student.name}"/>
+
+                <h:outputLabel>Gender</h:outputLabel>
+                <h:selectOneRadio value="#{studentBean.student.gender}">
+                    <f:selectItem itemValue="Male" itemLabel="Male"/>
+                    <f:selectItem itemValue="Female" itemLabel="Female"/>
+                </h:selectOneRadio>
+
+                <h:outputLabel>Round:</h:outputLabel>
+                <h:selectOneMenu value="#{studentBean.student.round}">
+                    <f:selectItem itemValue="Select A Round" itemLabel="Select A Round"/>
+                    <f:selectItem itemValue="Round 35" itemLabel="Round 35"/>
+                    <f:selectItem itemValue="Round 36" itemLabel="Round 36"/>
+                    <f:selectItem itemValue="Round 37" itemLabel="Round 37"/>
+                    <f:selectItem itemValue="Round 38" itemLabel="Round 38"/>
+                </h:selectOneMenu>
+
+                <h:outputLabel>Subject:</h:outputLabel>
+                <h:selectManyCheckbox value="#{studentBean.subject}">
+                    <f:selectItem itemValue="Java" itemLabel="Java"/>
+                    <f:selectItem itemValue="HTML" itemLabel="HTML"/>
+                    <f:selectItem itemValue="SPRING" itemLabel="SPRING"/>
+                </h:selectManyCheckbox>
+
+                <h:outputLabel>Message:</h:outputLabel>
+                <h:inputTextarea value="#{studentBean.student.msg}"/>
+            </h:panelGrid>
+            <h:commandButton action="#{studentBean.save()}" value="Submit"/>
+        </h:form>
+        <br/>
+
+    </h:body>
+</html>
+

@@ -1,0 +1,14 @@
+in git :
+step:1
+npm -v
+node -v
+ng -v
+npm install -g @angular/cli
+ng -v
+
+To create an Angular Project:
+ng new demo
+
+To go/run the project:
+ng serve --open
+(or cd demo)

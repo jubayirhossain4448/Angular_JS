@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    </head>
+    <body>
+        <ul ng-app="myApp" ng-controller="namesCtrl">
+            <li ng-repeat="x in names">
+                {{x | myFormat}}
+            </li>
+        </ul>
+        <script>
+            var app =
+            angular.module('myApp', []);
+            app.filter('myFormat', function(){
+                return function(x){
+                    var i, c, txt = "";
+                    for(i = 0; i<x.length; i++){
+                        c = x[i];
+                        if(i % 2 == 0){
+                            c.toUpperCase();
+                        }
+                        txt += c;
+                    }
+                    return txt;
+                };
+            });
+            app.controller('namesCtrl', function($scope){
+                $scope.names = [
+                   'Jubayir',
+                   'Hossain',
+                   'Mehdee',
+                   'Moly',
+                   'Israt',
+                   'Rojina',
+                   'Ruma',
+                   'Mehdee2',
+                    
+                ];
+            });
+            
+        </script>
+        <h1>Make your own filters.</h1>
+        <h1>This filter, called "myFormat", will uppercase every other character.</h1>
+    </body>
+</html>

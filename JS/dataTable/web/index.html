@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="myApp">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://code.jquery.com/jquery-3.3.1.js"/>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"/>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    </head>
+    <body>
+        <div>
+            <h1>Welcome To  Data Table View</h1>
+            <table id="example" class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                    <tr ng-repeat="x in names">
+                        <th>ID</th>
+                        <th>employee_name</th>
+                        <th>employee_salary</th>
+                        <th>employee_age</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tiger Nixon</td>
+                        <td>System Architect</td>
+                        <td>Edinburgh</td>
+                        <td>61</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <script>
+            $(document).ready(function () {
+                $('#example').DataTable();
+            });
+        </script>
+
+        <script>
+            var app = angular.module('myApp', []);
+            app.controller('customersCtrl', function ($scope, $http) {
+                $http.get("http://dummy.restapiexample.com/api/v1/employees")
+                        .then(function (response) {
+                            $scope.names = response.data;
+                        });
+            });
+        </script>
+        
+    </body>
+</html>

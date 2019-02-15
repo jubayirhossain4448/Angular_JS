@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>PrimeFaces</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                    Header
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                    Footer
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                    <p:menu>
+                        <p:submenu label="Resources">
+                            <p:menuitem value="Demo" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
+                            <p:menuitem value="Documentation" url="http://www.primefaces.org/documentation.html" />
+                            <p:menuitem value="Forum" url="http://forum.primefaces.org/" />
+                            <p:menuitem value="Themes" url="http://www.primefaces.org/themes.html" />
+
+                        </p:submenu>
+
+                    </p:menu>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <h:form>
+                        <p:growl id="growl"/>
+                        <p:commandButton id="btn" value="Show Slide Menu" type="button"/>
+
+                        <p:slideMenu overlay="true" trigger="btn" my="left top" at="left bottom" style="width: 190px;">
+                            <p:submenu label="CRUD Operations" icon="ui-icon-play">
+                                <p:menuitem value="Save" actionListener="#{slideMenuController.save}" icon="ui-icon-disk" update="growl"/>
+                                <p:menuitem value="Update" actionListener="#{slideMenuController.update}" icon="ui-icon-arrowrefresh-1-w" update="growl"/>
+                                <p:menuitem value="Delete" actionListener="#{slideMenuController.delete}" icon="ui-icon-trash" update="growl"/>
+                            </p:submenu>
+
+                            <p:submenu label="Other Operations" icon="ui-icon-play">
+                                <p:menuitem value="Do Something" actionListener="#{slideMenuController.doSomething}" icon="ui-icon-check" ajax="false"/>
+                                <p:menuitem value="Go Home" action="/views/home" ajax="false" icon="ui-icon-home"/>
+                            </p:submenu>
+
+                            <p:submenu label="JSF Links" icon="ui-icon-extlink">
+                                <p:submenu label="JSF Components">
+                                    <p:menuitem value="PrimeFaces" url="http://primefaces.org"/>
+                                    <p:menuitem value="PrimeFaces Extensions" url="http://code.google.com/p/primefaces-extensions"/>
+                                    <p:menuitem value="RichFaces" url="http://jboss.org/richfaces"/>
+                                </p:submenu>
+                                <p:menuitem value="JSF API" url="javaserverfaces.java.net/nonav/docs/2.1/"/>
+                            </p:submenu>
+                        </p:slideMenu>
+                    </h:form>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+

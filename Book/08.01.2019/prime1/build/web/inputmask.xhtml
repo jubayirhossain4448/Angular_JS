@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Input Mask</title>
+        <style type="text/css">
+    .value {
+        font-weight: bold;
+    }
+</style>
+    </h:head>
+    <h:body>
+        <h:form>
+    <h:panelGrid columns="2" cellpadding="5">
+        <p:outputLabel for="date" value="Date: " />
+        <p:inputMask id="date" value="#{maskView.date}" mask="99/99/9999"/>
+ 
+        <p:outputLabel for="phone" value="Phone:" />
+        <p:inputMask id="phone" value="#{maskView.phone}" mask="(999) 999-9999"/>
+ 
+        <p:outputLabel for="phoneWithExt" value="Phone with Ext:" />
+        <p:inputMask id="phoneWithExt" value="#{maskView.phoneExt}" mask="(999) 999-9999? x99999"/>
+ 
+        <p:outputLabel for="taxId" value="Tax Id:" />
+        <p:inputMask id="taxId" value="#{maskView.taxId}" mask="99-9999999"/>
+ 
+        <p:outputLabel for="ssn" value="SSN:" />
+        <p:inputMask id="ssn" value="#{maskView.ssn}" mask="999-99-9999"/>
+ 
+        <p:outputLabel for="key"  value="Product Key: " />
+        <p:inputMask id="key" value="#{maskView.productKey}" mask="a*-999-a999"/>
+ 
+        <p:commandButton value="Reset" type="reset" />
+        <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()"/>
+    </h:panelGrid>
+ 
+    <p:dialog widgetVar="dlg" modal="true" resizable="false" header="Values" showEffect="fade"> 
+        <p:panelGrid id="display" columns="2" columnClasses="label,value">
+            <h:outputText value="Date: " />
+            <h:outputText id="dateValue" value="#{maskView.date}" />
+ 
+            <h:outputText value="Phone: " />
+            <h:outputText id="phoneValue" value="#{maskView.phone}" />
+ 
+            <h:outputText value="Phone with Ext: " />
+            <h:outputText id="phoneWithExtValue" value="#{maskView.phoneExt}"/>
+ 
+            <h:outputText value="taxId: " />
+            <h:outputText id="taxValue" value="#{maskView.taxId}" />
+ 
+            <h:outputText value="SSN: " />
+            <h:outputText id="ssnValue" value="#{maskView.ssn}" />
+ 
+            <h:outputText value="Product Key: " />
+            <h:outputText id="keyValue" value="#{maskView.productKey}" />
+        </p:panelGrid>
+    </p:dialog>
+</h:form>
+    </h:body>
+</html>
+

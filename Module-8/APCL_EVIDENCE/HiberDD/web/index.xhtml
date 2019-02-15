@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <center>
+            <h:form>
+                <table border="0" cellspacing="5" cellpadding="5">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Id</td>
+                            <td>:</td>
+                            <td><h:inputText value="#{student.id}"></h:inputText></td>
+                        </tr>
+                        <tr>
+                            <td>Name</td>
+                            <td>:</td>
+                            <td><h:inputText value="#{student.name}"></h:inputText></td>
+                        </tr>
+                        <tr>
+                            <td>Subject</td>
+                            <td>:</td>
+                            <td><h:inputText value="#{student.subject}"></h:inputText></td>
+                        </tr>
+                        <tr>
+                            <td>Gender</td>
+                            <td>:</td>
+                            <td>
+                                <h:selectOneRadio value="#{student.gender}">
+                                    <f:selectItem itemValue="Male" itemLabel="Male"></f:selectItem>
+                                    <f:selectItem itemValue="Female" itemLabel="Female"></f:selectItem>
+                                    <f:selectItem itemValue="Others" itemLabel="Others"></f:selectItem>
+
+
+                                </h:selectOneRadio> 
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Password</td>
+                            <td>:</td>
+                            <td><h:inputSecret value="#{student.password}"></h:inputSecret></td>
+                        </tr>
+                        <tr>
+                            <td>Round</td>
+                            <td>:</td>
+                            <td>
+                                <h:selectOneMenu value="#{student.round}" >
+                                    <f:selectItem itemValue="Select one" itemLabel="Select one"></f:selectItem>
+                                    <f:selectItem itemValue="37" itemLabel="37"></f:selectItem>
+                                    <f:selectItem itemValue="38" itemLabel="38"></f:selectItem>
+                                    <f:selectItem itemValue="39" itemLabel="39"></f:selectItem>
+
+                                </h:selectOneMenu> 
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h:commandButton value="Save" action="#{student.doSave()}"></h:commandButton>
+                <h:commandButton value="Update" action="#{student.doUpdate()}"></h:commandButton>
+                <h:commandButton value="Delete" action="#{student.doDelete()}"></h:commandButton>
+
+            </h:form>
+
+            <h:form>
+                <table border="0" cellspacing="5" cellpadding="5">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Id</td>
+                            <td>Name</td>
+                            <td>Subject</td>
+                            <td>Gender</td>
+                            <td>Password</td>
+                            <td>Round</td>
+                        </tr>
+                        <c:forEach var="d" items="#{student.show}">
+                            <tr>
+                                <td>#{d.id}</td>
+                                <td>#{d.name}</td>
+                                <td>#{d.subject}</td>
+                                <td>#{d.gender}</td>
+                                <td>#{d.password}</td>
+                                <td>#{d.round}</td>
+                               
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+
+            </h:form>
+        </center>
+
+
+    </h:body>
+</html>
+

@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="form1">
+            ID: <h:inputText value="#{studentbean.student.id}"/>
+            <p:commandButton action="#{studentbean.searchById}">
+                
+            </p:commandButton>
+        </h:form>
+        <h:form>
+            Name: <h:inputText value="#{studentbean.student.name}"/><br/>
+            Gender: <h:selectOneRadio value="#{studentbean.student.gender}">
+                <f:selectItem itemValue="Male" itemLabel="Male"/>
+                <f:selectItem itemValue="Female" itemLabel="Female"/>
+            </h:selectOneRadio><br/>
+            Round: <h:selectOneMenu value="#{studentbean.student.round}">
+                <f:selectItem itemValue="Select A Round" itemLabel="Select A Round"/>
+                <f:selectItem itemValue="Round 35" itemLabel="Round 35"/>
+                <f:selectItem itemValue="Round 36" itemLabel="Round 36"/>
+                <f:selectItem itemValue="Round 37" itemLabel="Round 37"/>
+            </h:selectOneMenu><br/>
+            Subject: <h:selectManyCheckbox value="#{studentbean.student.subject}">
+                <f:selectItem itemValue="Java" itemLabel="Java"/>
+                <f:selectItem itemValue="PPT" itemLabel="PPT"/>
+                <f:selectItem itemValue="HTML" itemLabel="HTML"/>
+                <f:selectItem itemValue="Spring" itemLabel="Spring"/>
+            </h:selectManyCheckbox><br/>
+            Password: <h:inputText value="#{studentbean.student.password}"/><br/>
+            E-mail: <h:inputText value="#{studentbean.student.email}"/><br/>
+            Message: <h:inputTextarea value="#{studentbean.student.msg}"/>
+            <br/><br/>
+            <h:commandButton action="#{studentbean.save()}" value="Submit"></h:commandButton><br/><br/>
+        </h:form>
+    </h:body>
+</html>
+
